@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>Atomic_Crud.Infrastructure</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Atomic-Crud.Application\Atomic-Crud.Application.csproj" />
+    <ProjectReference Include="..\Atomic-Crud.Domain\Atomic-Crud.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
