@@ -21,10 +21,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Atomic-Crud.Api\Atomic-Crud.Api.csproj" />
-    <ProjectReference Include="..\Atomic-Crud.Application\Atomic-Crud.Application.csproj" />
-    <ProjectReference Include="..\Atomic-Crud.Domain\Atomic-Crud.Domain.csproj" />
-    <ProjectReference Include="..\Atomic-Crud.Infrastructure\Atomic-Crud.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\src\Atomic-Crud.Api\Atomic-Crud.Api.csproj" />
+    <ProjectReference Include="..\..\src\Atomic-Crud.Application\Atomic-Crud.Application.csproj" />
+    <ProjectReference Include="..\..\src\Atomic-Crud.Domain\Atomic-Crud.Domain.csproj" />
+    <ProjectReference Include="..\..\src\Atomic-Crud.Infrastructure\Atomic-Crud.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>
