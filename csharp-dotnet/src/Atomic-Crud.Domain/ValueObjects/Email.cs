@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using Ardalis.Result;
+using Atomic_Crud.Domain.Utils;
 
 namespace Atomic_Crud.Domain.ValueObjects
 {
@@ -6,10 +7,8 @@ namespace Atomic_Crud.Domain.ValueObjects
     {
         private const int MaxLength = 254;
 
-        public Email(string value)
+        private Email(string value)
         {
-            Validate(value);
-            
             var atIndex = value.IndexOf('@');
 
             Value = value;
@@ -21,22 +20,24 @@ namespace Atomic_Crud.Domain.ValueObjects
         public string Local { get; }
         public string Domain { get; }
 
-        private static void Validate(string value)
+        public static Result<Email> Create(string emailAddress)
         {
-            ArgumentException.ThrowIfNullOrWhiteSpace(value, nameof(value));
-
-            if (value.Length > MaxLength)
+            if (string.IsNullOrWhiteSpace(emailAddress))
             {
-                throw new ArgumentException($"Email cannot be longer than {MaxLength} characters.", nameof(value));
+                return Result<Email>.Error("The e-mail address must be provided.");
             }
 
-            if (!EmailRegex().IsMatch(value))
+            if (emailAddress.Length > MaxLength)
             {
-                throw new ArgumentException("Email is not in a valid format.", nameof(value));
+                return Result<Email>.Error($"The e-mail address must not exceed {MaxLength} characters.");
             }
+
+            if (!RegexPatterns.IsValidEmail.IsMatch(emailAddress))
+            {
+                return Result<Email>.Error("The e-mail address is not in a valid format.");
+            }
+
+            return Result<Email>.Success(new Email(emailAddress));
         }
-
-        [GeneratedRegex(@"^[^@\s]+@[^@\s]+\.[^@\s]+$")]
-        private static partial Regex EmailRegex();
     }
 }
