@@ -7,16 +7,16 @@ namespace Atomic_Crud.Domain.ValueObjects
     {
         private const int MaxLength = 254;
 
-        private Email(string value)
+        private Email(string emailAddress)
         {
-            var atIndex = value.IndexOf('@');
+            var atIndex = emailAddress.IndexOf('@');
 
-            Value = value;
-            Local = value[..atIndex];
-            Domain = value[(atIndex + 1)..];
+            Address = emailAddress;
+            Local = emailAddress[..atIndex];
+            Domain = emailAddress[(atIndex + 1)..];
         }
 
-        public string Value { get; }
+        public string Address { get; }
         public string Local { get; }
         public string Domain { get; }
 
